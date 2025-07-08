@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Para Ti</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Georgia', serif;
+      background: #fff8fb;
+      color: #4e2a2a;
+      text-align: center;
+      padding: 2rem 1rem;
+    }
+
+    header {
+      font-size: 2.2rem;
+      font-weight: bold;
+      margin-bottom: 2rem;
+      background: linear-gradient(120deg, #ffe6f1, #fbdff5);
+      padding: 2rem 1rem;
+      color: #502b3a;
+      border-radius: 12px;
+    }
+
+    .reveal-button {
+      display: inline-block;
+      margin: 1.5rem auto;
+      padding: 0.8rem 2.2rem;
+      font-size: 1.2rem;
+      background-color: #f6c7e2;
+      color: #3d1f2a;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      transition: background-color 0.3s ease;
+    }
+
+    .reveal-button:hover {
+      background-color: #ebb3d1;
+    }
+
+    .section {
+      display: none;
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 1rem;
+      animation: fadeIn 0.6s ease-in-out;
+    }
+
+    .photo img {
+      width: 100%;
+      max-width: 400px;
+      border-radius: 16px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .text {
+      margin-top: 1rem;
+      font-size: 1.25rem;
+      font-style: italic;
+    }
+
+    footer {
+      margin-top: 4rem;
+      font-size: 1.4rem;
+      color: #5e2a42;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(15px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <audio autoplay loop>
+    <source src="musica/music.mp3" type="audio/mpeg">
+  </audio>
+
+  <header>Para alguien que siempre fue arte...</header>
+
+  <!-- Botón inicial -->
+  <button class="reveal-button" id="btn1" onclick="showSection(1)">Luz</button>
+
+  <!-- Secciones progresivas -->
+  <div class="section" id="section1">
+    <div class="photo"><img src="fts/foto1.jpg" alt="Tu sonrisa"></div>
+    <div class="text">“Tus ojos tienen esa calma que necesito cuando todo es caos. Mirarlos es como encontrar un refugio donde puedo respirar, donde el mundo se detiene y solo existimos tú y yo.”</div>
+    <button class="reveal-button" id="btn2" onclick="showSection(2)">Brisa</button>
+  </div>
+
+  <div class="section" id="section2">
+    <div class="photo"><img src="fts/foto2.jpg" alt="Dulzura pura"></div>
+    <div class="text">“Tu sonrisa es de esas cosas que no me canso de admirar. Me encanta cómo ilumina tu rostro, cómo me invita a acercarme, a querer besarte sin pensarlo,
+es un sueño dulce que no dejo de buscar.”</div>
+    <button class="reveal-button" id="btn3" onclick="showSection(3)">Alba</button>
+  </div>
+
+  <div class="section" id="section3">
+    <div class="photo"><img src="fts/foto3.jpg" alt="Belleza sutil"></div>
+    <div class="text">“Cada línea de tu cuerpo tiene un misterio que no quiero resolver, solo disfrutar. Es un lenguaje silencioso que me atrae y me confunde, una invitación secreta que me quema por dentro y que solo quiero entenderlo sin más.”</div>
+    <button class="reveal-button" id="btn4" onclick="showSection(4)">Eco</button>
+  </div>
+
+  <div class="section" id="section4">
+    <div class="photo"><img src="fts/foto4.jpg" alt="Mirada de luna"></div>
+    <div class="text">“Eres como un poema salvaje, sin reglas ni final, algo que no puedo dejar de leer y sentir. Cada instante contigo es una línea que arde, una belleza que no se controla, libre y provocativa, imposible de ignorar.”</div>
+    <button class="reveal-button" id="btn5" onclick="showSection(5)">Flor</button>
+  </div>
+
+  <div class="section" id="section5">
+    <div class="photo"><img src="fts/foto5.jpg" alt="Infinita"></div>
+    <div class="text">“Tu manera de existir sin pedir permiso ni disculpas es lo que más admiro. No necesitas hacer nada para que te admire, solo ser tú, cruda, real y sin filtros. Eso es lo que me vuelve loco.”</div>
+    <button class="reveal-button" id="btn6" onclick="showSection(6)">Cielo</button>
+  </div>
+
+  <div class="section" id="section6">
+    <div class="photo"><img src="fts/foto6.jpg" alt="Brillo único"></div>
+    <div class="text">“No sé si el universo conspira o si solo estoy loco, pero cuando pienso en ti todo encaja y el mundo deja de ser un caos. Es como si todo tuviera sentido solo cuando estás en mi cabeza, y eso me basta.”</div>
+    <button class="reveal-button" onclick="resetPage()">Regresar al arte</button>
+    <footer>
+    Siempre serás arte, incluso cuando el mundo olvide cómo mirar.
+    </footer>
+  </div>
+
+
+  <script>
+    function showSection(n) {
+      const section = document.getElementById('section' + n);
+      if (section) {
+        section.style.display = 'block';
+        section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        const currentBtn = document.getElementById('btn' + n);
+        if (currentBtn) currentBtn.style.display = 'none';
+      }
+    }
+
+    function resetPage() {
+      // Oculta todas las secciones
+      for (let i = 1; i <= 6; i++) {
+        document.getElementById('section' + i).style.display = 'none';
+        const btn = document.getElementById('btn' + i);
+        if (btn) btn.style.display = 'inline-block';
+      }
+
+      // Vuelve al inicio
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  </script>
+
+</body>
+</html>
